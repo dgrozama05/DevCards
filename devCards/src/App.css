@@ -1,4 +1,10 @@
 /* ── Global app background ── */
+
+.root {
+  background-color: #07090e;
+}
+
+
 .app {
   min-height: 100vh;
   background-color: #080b12;
