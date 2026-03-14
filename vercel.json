@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd devCards && npm install && npm run build",
+  "outputDirectory": "devCards/dist",
+  "installCommand": "echo 'skip root install'"
+}
