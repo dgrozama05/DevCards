@@ -1,0 +1,166 @@
+/* ===== Panel base ===== */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #0f1117;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  color: #e2e8f0;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  min-width: 320px;
+}
+
+/* ===== Section title ===== */
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 12px;
+}
+
+/* ===== Field group ===== */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== Inputs ===== */
+.input,
+.select {
+  background: #1a1d27;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 14px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.input:focus,
+.select:focus {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.input.error,
+.select.error {
+  border-color: rgba(239, 68, 68, 0.6);
+}
+
+.input.error:focus,
+.select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.select option {
+  background: #1a1d27;
+  color: #e2e8f0;
+}
+
+/* ===== Error message ===== */
+.errorMsg {
+  font-size: 11px;
+  color: #f87171;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
+
+/* ===== Tech rows ===== */
+.techSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.techRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.techIndex {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.25);
+  padding-top: 12px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.techFields {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.techNameField {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.techScoreField {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ===== Divider ===== */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 4px 0;
+}
+
+/* ===== Level display (read-only) ===== */
+.levelDisplay {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  background: #1a1d27;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #e2e8f0;
+  letter-spacing: 1px;
+}
+
+.levelHint {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

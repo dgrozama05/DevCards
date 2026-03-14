@@ -1,0 +1,348 @@
+/* ===== Tilt 3D wrapper ===== */
+.tiltWrapper {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  --shine-y: 50%;
+  perspective: 900px;
+  display: inline-block;
+  border-radius: 18px;
+}
+
+/* ===== Card base ===== */
+.card {
+  position: relative;
+  width: 400px;
+  height: 560px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  user-select: none;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform 0.08s linear, box-shadow 0.08s linear;
+  will-change: transform;
+}
+
+.tiltWrapper:hover .card {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Shine highlight ===== */
+.shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--shine-x) var(--shine-y),
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 60%
+  );
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.tiltWrapper:hover .shine {
+  opacity: 1;
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.classIcon {
+  font-size: 28px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.className {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  flex: 1;
+}
+
+.level {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ===== Name zone ===== */
+.nameZone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+/* ===== Avatar ===== */
+.avatar {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarInitials {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  line-height: 1;
+}
+
+.avatarIcon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 20px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.devName {
+  font-size: 26px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 255, 255, 0.15);
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* ===== Overall badge ===== */
+.overallBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 4px 14px;
+  line-height: 1;
+}
+
+.overallValue {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.overallLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* ===== Placeholder style ===== */
+.placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+  font-style: italic;
+}
+
+/* ===== Divider ===== */
+.divider {
+  height: 2px;
+  border-radius: 2px;
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+
+/* ===== Tech list ===== */
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.techRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.techName {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 100px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barWrapper {
+  flex: 1;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.techScore {
+  font-size: 13px;
+  font-weight: 900;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footerText {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.footerLegendary {
+  border-top: 1px solid rgba(253, 224, 71, 0.4);
+}
+
+.footerTextLegendary {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #f59e0b, #fde68a, #f59e0b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: legendaryFooterShine 2s linear infinite;
+}
+
+@keyframes legendaryFooterShine {
+  to { background-position: 200% center; }
+}
+
+/* ===== Effect: Golden ===== */
+@keyframes goldenPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(255, 215, 0, 0.3),
+      0 0 40px rgba(255, 215, 0, 0.7),
+      0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.golden {
+  border: 2px solid #ffd700;
+  animation: goldenPulse 2s ease-in-out infinite;
+}
+
+/* ===== Effect: Holographic ===== */
+@keyframes holographicShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 0, 128, 0.25) 0%,
+    rgba(255, 165, 0, 0.2) 15%,
+    rgba(255, 255, 0, 0.2) 30%,
+    rgba(0, 255, 128, 0.2) 45%,
+    rgba(0, 200, 255, 0.25) 60%,
+    rgba(128, 0, 255, 0.2) 75%,
+    rgba(255, 0, 128, 0.25) 100%
+  );
+  background-size: 300% 300%;
+  animation: holographicShift 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.holographic {
+  border: 2px solid rgba(200, 200, 255, 0.6);
+}

@@ -1,0 +1,282 @@
+/* ── Global app background ── */
+.app {
+  min-height: 100vh;
+  background-color: #080b12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  box-sizing: border-box;
+}
+
+/* ── Title ── */
+.app-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 2rem;
+  text-align: center;
+  padding: 0 1rem;
+  line-height: 1.2;
+  width: 100%;
+}
+
+/* ── Two-column layout ── */
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 960px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.app-form {
+  flex: 1 1 340px;
+  min-width: 0;
+}
+
+.app-preview {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── Download button ── */
+.download-btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  color: #fff;
+  transition: filter 0.2s, transform 0.1s;
+}
+
+.download-btn:hover:not(:disabled) {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+
+.download-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.download-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+/* ── Download error message ── */
+.download-error {
+  color: #f87171;
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Responsive: stack vertically on small screens ── */
+@media (max-width: 767px) {
+  .app-layout {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .app-form {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* ── Supersaiyan aura around the card ── */
+.legendary-aura {
+  position: relative;
+  isolation: isolate;
+}
+
+.legendary-aura::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 26px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(253, 224, 71, 0.55) 0%,
+    rgba(245, 158, 11, 0.35) 40%,
+    transparent 70%
+  );
+  animation: ssAuraOuter 1.4s ease-in-out infinite alternate;
+}
+
+/* Card sits above the aura pseudoelements */
+.legendary-aura > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ssAuraOuter {
+  from { transform: scale(1);    opacity: 0.8; }
+  to   { transform: scale(1.06); opacity: 1;   }
+}
+
+/* Particle sparks */
+.legendary-sparks {
+  position: absolute;
+  inset: -20px;
+  border-radius: 30px;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
+.legendary-sparks span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fde68a;
+  box-shadow: 0 0 6px #f59e0b;
+  animation: sparkFloat var(--dur, 1.8s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes sparkFloat {
+  0%   { transform: translate(0, 0)   scale(1);   opacity: 1; }
+  50%  { transform: translate(var(--tx, 0px), var(--ty, -30px)) scale(1.4); opacity: 0.8; }
+  100% { transform: translate(0, 0)   scale(0.5); opacity: 0; }
+}
+
+/* ── Evolution overlay ── */
+.evolution-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Flash de luz blanca al final */
+.evolution-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  animation: evoFlash 3.2s forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes evoFlash {
+  0%    { opacity: 0; }
+  70%   { opacity: 0; }
+  82%   { opacity: 1; }
+  90%   { opacity: 1; }
+  100%  { opacity: 0; }
+}
+
+/* Carta girando y volviéndose dorada */
+.evolution-card-wrap {
+  position: relative;
+  z-index: 1;
+  animation: evoCardSpin 3.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: brightness(1);
+}
+
+@keyframes evoCardSpin {
+  0%   {
+    transform: rotateY(0deg) scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  15%  {
+    transform: rotateY(180deg) scale(1.05);
+    filter: brightness(1.5) saturate(0.5) sepia(0.3);
+  }
+  30%  {
+    transform: rotateY(360deg) scale(1.1);
+    filter: brightness(2) saturate(0.2) sepia(0.8);
+  }
+  45%  {
+    transform: rotateY(540deg) scale(1.15);
+    filter: brightness(3) saturate(0) sepia(1);
+  }
+  60%  {
+    transform: rotateY(720deg) scale(1.2);
+    filter: brightness(4) saturate(0.5) sepia(1) hue-rotate(30deg);
+  }
+  75%  {
+    transform: rotateY(900deg) scale(1.25);
+    filter: brightness(6) saturate(2) sepia(1) hue-rotate(15deg);
+  }
+  88%  {
+    transform: rotateY(1080deg) scale(1.3);
+    filter: brightness(10) saturate(3) sepia(1);
+  }
+  100% {
+    transform: rotateY(1080deg) scale(1.3);
+    filter: brightness(20) saturate(0) sepia(1);
+  }
+}
+
+/* Partículas doradas volando durante la evolución */
+.evolution-overlay::before,
+.evolution-overlay::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fde68a;
+  box-shadow: 0 0 12px #f59e0b, 0 0 30px #f59e0b;
+  animation: evoParticle1 3.2s ease-in-out forwards;
+}
+
+.evolution-overlay::after {
+  width: 4px;
+  height: 4px;
+  animation: evoParticle2 3.2s ease-in-out 0.2s forwards;
+}
+
+@keyframes evoParticle1 {
+  0%   { transform: translate(0, 0);       opacity: 0; }
+  20%  { transform: translate(-120px, -80px); opacity: 1; }
+  60%  { transform: translate(-200px, -200px); opacity: 0.8; }
+  100% { transform: translate(-300px, -350px); opacity: 0; }
+}
+
+@keyframes evoParticle2 {
+  0%   { transform: translate(0, 0);       opacity: 0; }
+  20%  { transform: translate(100px, -90px); opacity: 1; }
+  60%  { transform: translate(180px, -220px); opacity: 0.8; }
+  100% { transform: translate(280px, -360px); opacity: 0; }
+}
+
+/* ── Card reveal after evolution ── */
+@keyframes cardReveal {
+  0%   { transform: scale(0.8) rotateY(90deg); opacity: 0; filter: brightness(3); }
+  40%  { transform: scale(1.08) rotateY(0deg); opacity: 1; filter: brightness(1.5); }
+  70%  { transform: scale(0.97); filter: brightness(1); }
+  100% { transform: scale(1);    filter: brightness(1); }
+}
+
+.card-reveal {
+  animation: cardReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
