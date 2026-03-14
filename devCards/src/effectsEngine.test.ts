@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
-import { evaluateEffects, DEFAULT_RULES, registerRule } from './effectsEngine';
+import { evaluateEffects, DEFAULT_RULES } from './effectsEngine';
 import { LEGENDARY_COMBOS } from './constants';
 import type { FormState, EffectRule } from './types';
 
